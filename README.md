@@ -1,4 +1,4 @@
-# sb_43_jobly_wReact
+# sb_43_jobly_w_react
 Jobly with React. Springboard Cumulative Project, publicy viewable.
 
 ## Time Tracker
