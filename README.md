@@ -1,6 +1,8 @@
 # sb_43_jobly_w_react
 Jobly with React. Springboard Cumulative Project, publicy viewable.
 
+**Live Link**:
+
 ## Time Tracker
 |Entry No.|Assignment|Date|Time|Time Elasped (min)|
 |-|-|-|-|-|
