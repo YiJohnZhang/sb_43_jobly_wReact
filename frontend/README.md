@@ -6,8 +6,8 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 ## Time Tracker
 |Entry No.|Assignment|Date|Time|Time Elasped (min)|
 |-|-|-|-|-|
-|01|`README.md`|2022-12-12|16:49 - 16:52||
-|02||2022-12-|: - :||
+|01|`README.md`|2022-12-12|16:49 - 16:52|3|
+|02|start|2022-12-15|20:08 - 2:||
 |03||2022-12-|: - :||
 |04||2022-12-|: - :||
 |05||2022-12-|: - :||
