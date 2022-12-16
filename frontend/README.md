@@ -9,15 +9,15 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |01|`README.md`|2022-12-12|16:49 - 16:52|3|
 |02|start, Jobly `api` preliminary, basic components|2022-12-15|20:08 - 22:03|115|
 |03|continue jobly (pages skeleton)|2022-12-16|09:12 - 10:43|91|
-|04|continue jobly (api call). paused because of webpack error.|2022-12-16|14:18 - 15:37||
-|05||2022-12-|: - :||
+|04|continue jobly (api call). paused because of webpack error.|2022-12-16|14:18 - 15:37|79|
+|05||2022-12-16|: - :||
 |06||2022-12-|: - :||
 |07||2022-12-|: - :||
 |08||2022-12-|: - :||
 |09||2022-12-|: - :||
 ||||**Total Time**| minutes|
-03  04
-209 
+04	05
+288 
 
 ```sh
 App
