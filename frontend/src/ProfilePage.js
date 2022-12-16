@@ -1,17 +1,19 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import JoblyAPI from './helpers/api';
 import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import useControlledForm from './hooks/useControlledForm';
 
-function ProfilePage({firstname, lastname, email}){
+function ProfilePage({firstName, lastName, email}){
 
 	useAuthenticationDependentRedirect();
 
-	const INITIAL_FORM_STATE = {firstname, lastname, email, password: ''};
+	const history = useHistory();
 
+	const INITIAL_FORM_STATE = {firstName, lastName, email, password: ''};
 	const [formState, setFormState] = useControlledForm(INITIAL_FORM_STATE);
 
-	function formChangeHandler(){
+	function formChangeHandler(evt){
 
 		const {name, value} = evt.target
 
@@ -19,11 +21,14 @@ function ProfilePage({firstname, lastname, email}){
 
 	}
 
-	function clickHandler(){
+	function clickHandler(evt){
 
 		evt.preventDefault();
 
-		// if successful, refresh?
+		const result = JoblyAPI.updateProfile("USERNAME_PLACEHOLDER", formState);
+			// todo: PLACEHOLDER HERE
+
+		if(result.user)
 			history.push('/profile');
 			// how to referesh?
 
@@ -36,18 +41,18 @@ function ProfilePage({firstname, lastname, email}){
 
 		<form>
 
-			<label htmlFor="firstname"><strong>First Name</strong>: </label>
-			<input name="firstname"
+			<label htmlFor="firstName"><strong>First Name</strong>: </label>
+			<input name="firstName"
 				type="text"
 				onChange={formChangeHandler}
-				value={formState.firstname}
+				value={formState.firstName}
 				/>
 
-			<label htmlFor="lastname"><strong>Last Name</strong>: </label>
-			<input name="lastname"
+			<label htmlFor="lastName"><strong>Last Name</strong>: </label>
+			<input name="lastName"
 				type="text"
 				onChange={formChangeHandler}
-				value={formState.lastname}
+				value={formState.lastName}
 				/>
 
 			<label htmlFor="email"><strong>Email</strong>: </label>

@@ -1,8 +1,6 @@
-// fetch api: jobs that match this company
-// import JoblyAPI from '../api';
-// note react doesn't support relative imports outside of './src'
 import { useState, useEffect } from 'react';
 
+import JoblyAPI from './helpers/api';	// apparently while this idea is good, can't figure out another way to use `useEffect` less.
 import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import useControlledForm from './hooks/useControlledForm';
 import JobCard from "./JobCard";
@@ -13,8 +11,32 @@ function JobsPage(){
 
 	const INITIAL_FORM_STATE = {searchbar: ''};
 
-	const [matchingCompanyList, setMatchingCompanyList] = useState([]);
+	const [matchingJobList, setMatchingJobList] = useState([]);
 	const [formState, setFormState] = useControlledForm(INITIAL_FORM_STATE);
+
+	useEffect(() => {
+
+		async function searchJobs(){
+			
+			const jobList = await JoblyAPI.searchJobs(formState.searchbar);
+			setMatchingJobList(jobList);
+
+		}
+
+		async function returnAllJobs(){
+
+			const jobList = await JoblyAPI.returnAllJobs();
+			setMatchingJobList(jobList);
+
+		}
+
+		if(formState.searchbar){
+			searchJobs();
+		}else{
+			returnAllJobs();
+		}
+
+	}, [formState]);
 
 	function formChangeHandler(evt){
 
@@ -27,7 +49,7 @@ function JobsPage(){
 	//	...
 
 	return(
-	<div class="page">
+	<div className="page">
 
 		<form>
 			<input name="searchbar"
@@ -38,10 +60,10 @@ function JobsPage(){
 				/>
 		</form>
 
-		{/* .map((jobListing) => (
-			<JobCard listingCompany={companyName} jobListing={jobListing}
+		{matchingJobList.map((jobListing) => (
+			<JobCard jobListing={jobListing}
 				key={jobListing.id} />
-		)) */}
+		))}
 
 	</div>
 	);

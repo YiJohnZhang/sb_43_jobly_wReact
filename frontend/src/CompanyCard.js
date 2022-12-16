@@ -1,20 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function CompanyCard({company}){
 
-	const {companyHandle, companyName, ..., companyLogo} = company;
+	const {handle, name, description, numEmployees, logoURL} = company;
 
 	return (
-	<div key={companyHandle} class="listing-container">
+	<div class="listing-container">
 	<table><tbody><tr>
 		<td>
-			<Link to={`/${companyHandle}`}><h1>{companyName}</h1></Link>
-			<p></p>
-			<ul>
-				{/* company details? */}
-			</ul>
+			<Link to={`/${handle}`}><h1>{name}</h1></Link>
+			<p>{description}</p>
+			<p><strong>Employees</strong>: {numEmployees}</p>
 		</td>	
-		<td>{companyLogo && <image src={} alt={`${companyName} logo`}/>}</td>
+		<td>{logoURL === undefined ? false : true && <image src={logoURL} alt={`${name} logo`}/>}</td>
+		{/* <td>{logoURL && <image src={logoURL} alt={`${name} logo`}/>}</td> */}
 	</tr></tbody></table>		
 	</div>
 	);

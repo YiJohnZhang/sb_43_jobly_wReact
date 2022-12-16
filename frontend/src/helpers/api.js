@@ -1,4 +1,5 @@
 import axios from "axios";
+import { response } from "express";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -36,29 +37,55 @@ class JoblyAPI {
 
   // Individual API routes
 
-  /** Get details on a company by handle. */
+  
+  /** Return all companies in the database */
+  static async getAllCompanies(){
+	const response = await this.request('companies/');
+	return response.companies;
+  }
 
+  /** Get details on a company by handle. */
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
+
+  /** Get companies by searching company name */
+  static async searchCompanies(companyName){
+	const response = await this.request(`companies/?name=${companyName}`);
+	return response.companies;
+  }
   
+  /** Return all jobs in the database */
+  static async getAllJobs(){
+	const response = await this.request('jobs/');
+	return response.jobs;
+  }
+
   /** Get job listing by id. */
-  static async getJobListingByID(jobID){
+  static async getJobByID(jobID){
 	  const response = await this.request(`jobs/${jobID}`);
 	  return response.job;
   }
 
   /** Get job listings by searching a title */
-  static async getJobListingSearch(jobTitle){
-	  const response = await this.request(`jobs?title=${jobTitle}`,);
-	  return response.
+  static async searchJobs(jobTitle){
+	  const response = await this.request(`jobs/?title=${jobTitle}`,);
+	  return response.jobs;
   }
 
   /** Apply to job listing by job id. */
   static async applyToJobByID(username, jobID){
-	  const response = await this.request(`users/${username}/jobs/${jobID}`, method='post')
+	  const response = await this.request(`users/${username}/jobs/${jobID}`, {}, 'post');
 	  return response.applied;
+	}
+
+	/** Update profile */
+	// ok, so apparently the "confirm password" is just to update password not to check it .______________________.
+	// and `/token` is the login route...
+	static async updateProfile(username, newUserData){
+		const response = await this.request(`users/${username}`, newUserData, 'patch');
+		return response;		
 	}
 
 }

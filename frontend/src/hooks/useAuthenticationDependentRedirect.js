@@ -10,7 +10,7 @@ function useAuthenticationDependentRedirect(authenticationRequired = true){
 	// validate authentication token
 
 	const history = useHistory();
-
+/*
 	// sign in required, not signed in
 	if(authenticationRequired)
 		// check user session is signed out
@@ -20,7 +20,7 @@ function useAuthenticationDependentRedirect(authenticationRequired = true){
 	if(!authenticationRequired)
 		// check user session is signed
 			history.goBack();
-
+*/
 }
 
 export default useAuthenticationDependentRedirect;

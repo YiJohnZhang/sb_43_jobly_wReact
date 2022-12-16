@@ -15,7 +15,7 @@ import ApplicationContext from './context/AuthenticationContext';
 function App() {
 
 	return (
-	<ApplicationContext.Provider value={}>
+	<ApplicationContext.Provider value={'asfd'}>
 		<NavBar/>
 		<Switch>
 			<Route path="/company/:companyHandle">
