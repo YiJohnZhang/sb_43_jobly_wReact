@@ -1,25 +1,50 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
 import './App.css';
+import NavBar from './NavBar';
+import CompaniesPage from './CompaniesPage';
+import CompanyPage from './CompanyPage';
+import ProfilePage from './ProfilePage';
+import HomePage from './HomePage';
+import JobsPage from './JobsPage';
+import OnboardingPage from './OnboardingPage';
+
+import ApplicationContext from './context/AuthenticationContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	
+
+	return (
+	<ApplicationContext.Provider value={}>
+		<NavBar/>
+		<Switch>
+			<Route path="/company/:companyName">
+				<CompanyPage />
+			</Route>
+			<Route exact path="/company/">
+				<CompaniesPage />
+			</Route>
+			<Route path="/jobs">
+				<JobsPage />
+			</Route>
+			<Route path="/profile">
+				<ProfilePage />
+			</Route>
+			<Route path="/login">
+				<OnboardingPage onboardingType="signup" />
+			</Route>
+			<Route path="/signup">
+				<OnboardingPage onboardingType="signup" />
+			</Route>
+			<Route exact path="/">
+				<HomePage />
+			</Route>
+			<Redirect path="/" />
+		</Switch>
+	</ApplicationContext.Provider>
+	);
 }
 
 export default App;
