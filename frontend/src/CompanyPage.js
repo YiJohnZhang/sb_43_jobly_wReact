@@ -1,42 +1,28 @@
-import { useState, useEffect } from 'react';
-
-import useControlledForm from './hooks/useControlledForm';
+import { useParams } from 'react-router-dom';
+// fetch api: jobs that match this company
 // import JoblyAPI from '../api';
 // note react doesn't support relative imports outside of './src'
+import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import CompanyCard from './CompanyCard';
+import JobCard from './JobCard';
 
 function CompanyPage(){
 
-	const INITIAL_FORM_STATE = {'searchbar': ''};
+	useAuthenticationDependentRedirect();
 
-	const [matchingCompanyList, setMatchingCompanyList] = useState([]);
-	const [formState, setFormState] = useControlledForm(INITIAL_FORM_STATE);
+	const {companyHandle} = useParams()
 
-	function formChangeHandler(evt){
 
-		const {name, value} = evt.target
-
-		setFormState(name, value);
-
-	}
-
-	// get a useEffect hook to wrap jobliyAPI and 
-	useEffect(() => {
-
-	}, [formState])
 
 	return(
 	<div className="page">
-
-		<form>
-			<input name="searchbar"
-				type="text"
-				placeholder="Search Companies..."
-				onChange={formChangeHandler}
-				/>
-		</form>
-
-		{/* {companies.map((company) =>	<CompanyCard company={company}/>)} */}
+	
+		<CompanyCard companyHandle={companyHandle}/>
+		
+		{/* {jobs.map((jobListing) => (
+			<JobCard listingCompany={???} jobListing={jobListing}
+				key={jobListing.id} />
+		))} */}
 
 	</div>
 	);
@@ -44,5 +30,3 @@ function CompanyPage(){
 }
 
 export default CompanyPage;
-// todo: maybe make a useDynamicSearch Hook for qol
-// rofl challenge: generalize this for jobs; but that will take a eval operator?

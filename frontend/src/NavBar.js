@@ -10,16 +10,20 @@ const ACTIVE_STYLE = {
 const NavBar = () => (
 <table><tbody><tr>
 
+	{/* group 1 (align left) */}
 	<td><NavLink exact activeStyle={ACTIVE_STYLE} to="/">Home</NavLink></td>
 
-	{/* if signed out */}
-	<td><NavLink activeStyle={ACTIVE_STYLE} to="/signup">Sign Up</NavLink></td>
-	<td><NavLink activeStyle={ACTIVE_STYLE} to="/login">Login</NavLink></td>
-
-	{/* if signed in */}
+		{/* if signed in */}
 	<td><NavLink activeStyle={ACTIVE_STYLE} to="/companies">Companies</NavLink></td>
 	<td><NavLink activeStyle={ACTIVE_STYLE} to="/jobs">Jobs</NavLink></td>
 	<td><NavLink activeStyle={ACTIVE_STYLE} to="/profile">Profile</NavLink></td>
+
+	{/* group 2 (align right) */}
+		{/* if signed out */}
+	<td><NavLink activeStyle={ACTIVE_STYLE} to="/signup">Sign Up</NavLink></td>
+	<td><NavLink activeStyle={ACTIVE_STYLE} to="/login">Login</NavLink></td>
+		{/* if signed in */}
+	<td><NavLink to="/logout">Logout</NavLink></td>
 	
 </tr></tbody></table>
 );

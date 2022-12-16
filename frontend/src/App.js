@@ -14,13 +14,11 @@ import ApplicationContext from './context/AuthenticationContext';
 
 function App() {
 
-	
-
 	return (
 	<ApplicationContext.Provider value={}>
 		<NavBar/>
 		<Switch>
-			<Route path="/company/:companyName">
+			<Route path="/company/:companyHandle">
 				<CompanyPage />
 			</Route>
 			<Route exact path="/company/">
@@ -33,10 +31,10 @@ function App() {
 				<ProfilePage />
 			</Route>
 			<Route path="/login">
-				<OnboardingPage onboardingType="signup" />
+				<OnboardingPage onboardingMethod="login" />
 			</Route>
 			<Route path="/signup">
-				<OnboardingPage onboardingType="signup" />
+				<OnboardingPage onboardingMethod="signup" />
 			</Route>
 			<Route exact path="/">
 				<HomePage />

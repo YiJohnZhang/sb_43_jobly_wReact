@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function useControlledForm(INITIAL_FORM_STATE){
 
