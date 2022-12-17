@@ -17,17 +17,17 @@ function ProfilePage(){
 
 	useEffect(() => {
 
-		const fetchInfo =(async () => {
+		async function prePopulateFormData() {
 
-			const formData = await JoblyAPI.getProfileDetails('USERNAME_PLACEHOLDER');
+			const formData = await JoblyAPI.getProfileDetails('testuser');
 				// todo: PLACEHOLDER HERE
 			overwriteFormState(formData)
 			setIsLoading(false);
 				// BONUS: create a `isLoading` Hook
 
-		});
+		};
 
-		fetchInfo();
+		prePopulateFormData();
 
 	}, [])
 
@@ -36,7 +36,6 @@ function ProfilePage(){
 	function formChangeHandler(evt){
 
 		const {name, value} = evt.target
-
 		setFormState(name, value);
 
 	}
@@ -45,12 +44,11 @@ function ProfilePage(){
 
 		evt.preventDefault();
 
-		const result = JoblyAPI.updateProfile("USERNAME_PLACEHOLDER", formState);
+		const result = JoblyAPI.updateProfile("testuser", formState);
 			// todo: PLACEHOLDER HERE
 
-		if(result.data)
-			history.push('/profile');
-			// how to referesh?
+		if(result)
+			history.push('/');
 
 	}
 

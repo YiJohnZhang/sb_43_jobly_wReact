@@ -45,14 +45,22 @@ class JoblyAPI {
   // Individual API routes
 
   /** Register */
-  static async register(){
-	const response = await this.request('/');
+  static async register(newUserData){
+	const response = await this.request('/auth', newUserData, 'post');
 
   }
 
   /** Login */
-  static async login(){
-	  const response = await this.request('/');
+  static async login(userLoginData){
+
+	  const response = await this.request('/token', userLoginData, 'post');
+
+	  if(response.token){
+
+	  }
+
+	  return;
+
   }
   
   /** Return all companies in the database */
@@ -91,24 +99,42 @@ class JoblyAPI {
 	  return response.jobs;
   }
 
+  /** Get jobs users has already applied to */
+  static async getAppliedJobs(username){
+	// change it to "this username"
+	const response = await this.request(`users/${username}/jobs`);
+	console.log(response.appliedJobs);
+	return response.appliedJobs;
+  }
+
   /** Apply to job listing by job id. */
   static async applyToJobByID(username, jobID){
 	  const response = await this.request(`users/${username}/jobs/${jobID}`, {}, 'post');
 	  return response.applied;
 	}
 
-	/** get profile details */
+	/** Get profile details */
 	static async getProfileDetails(username){
+
 		const response = await this.request(`users/${username}`);
+		if(typeof response.user.isAdmin === 'boolean') delete response.user.isAdmin;
+			// this is on the API...if `isAdmin` is private, there should be another endpoint that delivers a web-safe user data --without `isAdmin`.
+		
 		return response.user;
+
 	}
 
 	/** Update profile */
 	// ok, so apparently the "confirm password" is just to update password not to check it .______________________.
 	// and `/token` is the login route...
 	static async updateProfile(username, newUserData){
+		
+		if(newUserData.username) delete newUserData.username;
+		if(newUserData.applications) delete newUserData.applications;
+		
 		const response = await this.request(`users/${username}`, newUserData, 'patch');
 		return response.user;
+
 	}
 
 }

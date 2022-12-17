@@ -120,6 +120,22 @@ router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, 
 });
 
 
+/**	GET /[username]/jobs	=>	{appliedJobs}
+ *	Returns {"appliedJobs": [...job]}
+ *		where `job` = { id, title, companyHandle, companyName, state }
+ *	Authroization required: admin or same-user-as-:username (per Springboard Specifications)
+ */
+router.get('/:username/jobs', ensureCorrectUserOrAdmin, async (req, res, nxt) => {
+	try{
+
+		const appliedJobs = await User.returnAppliedJobs(req.params.username);
+		return res.json({appliedJobs});
+
+	}catch(err){
+		return nxt(err)
+	}
+})
+
 /** POST /[username]/jobs/[id]  { state } => { application }
  *
  * Returns {"applied": jobId}

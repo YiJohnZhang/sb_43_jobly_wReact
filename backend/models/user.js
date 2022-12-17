@@ -211,6 +211,28 @@ class User {
     if (!user) throw new NotFoundError(`No user: ${username}`);
   }
 
+  /**	Returned applied jobs.
+   * 	Returns [...job]
+   */
+  static async returnAppliedJobs(username){
+
+	const userExists = await db.query(
+		`SELECT username
+		FROM users
+		WHERE username = $1`, [username]);
+
+	const user = userExists.rows[0];
+	if (!user) throw new NotFoundError(`No username of ${username}`);
+
+	const result = await db.query(`
+		SELECT job_id
+		FROM applications
+		WHERE username = $1`, [username]);
+	
+	return result.rows;
+
+  }
+
   /** Apply for job: update db, returns undefined.
    *
    * - username: username applying for job

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import useControlledForm from './hooks/useControlledForm';
+import JoblyAPI from './helpers/api';
 
 // import React from 'react';
 // import { Link } from 'react-router-dom';
@@ -43,9 +44,23 @@ function OnboardingPage({onboardingMethod}){
 
 		evt.preventDefault();
 
-		// if successful, redirect
-			history.push('/');
+		if(onboardingMethod === 'signup'){
 
+			const response = JoblyAPI.register();
+
+			if(response)
+				history.push('/companies');
+
+		}else if(onboardingMethod === 'login'){
+
+			const response = JoblyAPI.login();
+
+			if(response)
+				history.push('/companies');
+
+		}
+
+		// stay at page.
 
 	}
 
@@ -59,6 +74,33 @@ function OnboardingPage({onboardingMethod}){
 			<table className='formTable'><tbody>
 				
 			{/* BONUS: make a `useForm()` component that returns a component, changeHandler, submitHandler Hook w/ configurable initial state */}
+
+			{onboardingMethod === "signup" && (
+			<React.Fragment>
+				<tr>
+				<td><label htmlFor="firstName"><strong>First Name</strong>: </label></td>
+				<td><input name="firstName"
+					type="text"
+					onChange={formChangeHandler}
+					value={formState.firstName}
+					/></td></tr>
+
+				<tr>
+				<td><label htmlFor="lastName"><strong>Last Name</strong>: </label></td>
+				<td><input name="lastName"
+					type="text"
+					onChange={formChangeHandler}
+					value={formState.lastName}
+					/></td></tr>
+
+				<tr>
+				<td><label htmlFor="email"><strong>Email</strong>: </label></td>
+				<td><input name="email"
+					type="text"
+					onChange={formChangeHandler}
+					value={formState.email}
+					/></td></tr>
+			</React.Fragment>)}
 
 			<tr>
 			<td><label htmlFor="username"><strong>Username</strong>: </label></td>
@@ -78,18 +120,6 @@ function OnboardingPage({onboardingMethod}){
 				value={formState.password}
 				/>
 			</td>
-			</tr>
-
-			<tr>
-			{onboardingMethod === "signup" && (
-			<React.Fragment>
-				<td><label htmlFor="email"><strong>Email</strong>: </label></td>
-				<td><input name="email"
-					type="text"
-					onChange={formChangeHandler}
-					value={formState.email}
-					/></td>
-			</React.Fragment>)}
 			</tr>
 			
 			<tr><td colSpan={2}>
