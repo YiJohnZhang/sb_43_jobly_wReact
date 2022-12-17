@@ -12,9 +12,13 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |04|continue jobly (api call). paused because of webpack error.|2022-12-16|14:18 - 15:37|79|
 |05|continue jobly|2022-12-16|17:10 - 17:53|42|
 |06|continue jobly, found out error why database server didn't work|2022-12-16|19:42 - 20:47|65|
-|07|jobly: styling, api (login/signup), applied (add `GET`), local storage|2022-12-16|21:16 - 23:13||
-|08||2022-12-|: - :||
-|09||2022-12-|: - :||
+|07|jobly: styling, profile editing|2022-12-16|21:16 - 23:13|117|
+|08|applied (add `GET` for users-jobs join), api (login/signup), local storage|2022-12-17|10:57 - :||
+|09||2022-12-17|: - :||
+|10||2022-12-17|: - :||
+|11|cleanup `README.md`|2022-12-17|: - :||
+|12||2022-12-|: - :||
+|13||2022-12-|: - :||
 ||||**Total Time**| minutes|
 07	08
 512 
