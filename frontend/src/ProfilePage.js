@@ -32,8 +32,6 @@ function ProfilePage({firstName, lastName, email}){
 			history.push('/profile');
 			// how to referesh?
 
-		
-
 	}
 
 	return(
@@ -65,7 +63,7 @@ function ProfilePage({firstName, lastName, email}){
 				/>
 			<br/>
 
-			<label htmlFor="password"><strong>Confirm Password</strong>: </label>
+			<label htmlFor="password"><strong>Change Password</strong>: </label>
 			<input name="password"
 				type="passowrd"
 				onChange={formChangeHandler}

@@ -11,13 +11,13 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |03|continue jobly (pages skeleton)|2022-12-16|09:12 - 10:43|91|
 |04|continue jobly (api call). paused because of webpack error.|2022-12-16|14:18 - 15:37|79|
 |05|continue jobly|2022-12-16|17:10 - 17:53|42|
-|06|continue jobly, database server works|2022-12-16|19:42 - :||
+|06|continue jobly, found out error why database server didn't work|2022-12-16|19:42 - 20:47||
 |07||2022-12-|: - :||
 |08||2022-12-|: - :||
 |09||2022-12-|: - :||
 ||||**Total Time**| minutes|
-04	05
-288 
+05	06
+327 
 
 ```sh
 App
@@ -37,12 +37,21 @@ App
 	└── Align Left: Logout or (Signup & Sign In)
 ```
 
-- `navbar.js`: authcontext for nvabar (S3)
-- company skeleton	d
-- jobs skeletong	d
-- profile skeleton	d
-- onboarding skeleton	d
+- todo:
+	- profile page
+	- api: login/signup
+	- current use w/ local storage
+	- routing: protect routes (uncomment)
+	- applied function
+	- styling
 
+- in 2 hours time:
+	- api.singup
+	- applied function
+	- styling
+
+
+- `navbar.js`: authcontext for nvabar (S3)
 
 - company & jobs	
 - s6: user + protecc views

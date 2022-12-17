@@ -10,12 +10,12 @@ import HomePage from './HomePage';
 import JobsPage from './JobsPage';
 import OnboardingPage from './OnboardingPage';
 
-import ApplicationContext from './context/AuthenticationContext';
+import AuthenticationContext from './context/AuthenticationContext';
 
 function App() {
 
 	return (
-	<ApplicationContext.Provider value={'asfd'}>
+	<AuthenticationContext.Provider value={'asfd'}>
 		<NavBar/>
 		<Switch>
 			<Route path="/companies/:companyHandle">
@@ -41,7 +41,7 @@ function App() {
 			</Route>
 			<Redirect to="/" />
 		</Switch>
-	</ApplicationContext.Provider>
+	</AuthenticationContext.Provider>
 	);
 }
 

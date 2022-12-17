@@ -30,7 +30,7 @@ function JobsPage(){
 		async function returnAllJobs(){
 			
 			try{
-				const jobList = await JoblyAPI.returnAllJobs();
+				const jobList = await JoblyAPI.getAllJobs();
 				setMatchingJobList(jobList);
 			}catch(error){
 				console.error(error);
@@ -53,8 +53,6 @@ function JobsPage(){
 		setFormState(name, value);
 
 	}
-
-	//	...
 
 	return(
 	<div className="page">

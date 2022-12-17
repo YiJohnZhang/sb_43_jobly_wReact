@@ -63,6 +63,7 @@ function OnboardingPage({onboardingMethod}){
 				onChange={formChangeHandler}
 				value={formState.username}
 				/>
+			<br/>
 
 			<label htmlFor="password"><strong>Password</strong>: </label>
 			<input name="password"
@@ -70,6 +71,7 @@ function OnboardingPage({onboardingMethod}){
 				onChange={formChangeHandler}
 				value={formState.password}
 				/>
+			<br/>
 
 			{onboardingMethod === "signup" && (
 			<React.Fragment>
@@ -79,6 +81,7 @@ function OnboardingPage({onboardingMethod}){
 					onChange={formChangeHandler}
 					value={formState.email}
 					/>
+				<br/>
 			</React.Fragment>)}
 
 			<button onClick={clickHandler}>{onboardingMethod === 'login' ? "Login" : "Register"}</button>

@@ -18,6 +18,10 @@ class JoblyAPI {
   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
+//   static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
 
@@ -40,6 +44,15 @@ class JoblyAPI {
 
   // Individual API routes
 
+  /** Register */
+  static async register(){
+
+  }
+
+  /** Login */
+  static async login(){
+	  
+  }
   
   /** Return all companies in the database */
   static async getAllCompanies(){
@@ -83,20 +96,19 @@ class JoblyAPI {
 	  return response.applied;
 	}
 
+	/** get profile details */
+	static async getProfileDetails(){
+		const response = await this.request('users/')
+	}
+
 	/** Update profile */
 	// ok, so apparently the "confirm password" is just to update password not to check it .______________________.
 	// and `/token` is the login route...
 	static async updateProfile(username, newUserData){
 		const response = await this.request(`users/${username}`, newUserData, 'patch');
-		return response.user;		
+		return response.user;
 	}
 
 }
-
-// for now, put token ("testuser" / "password" on class)
-// JoblyAPI.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
-// JoblyAPI.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 export default JoblyAPI;

@@ -46,8 +46,6 @@ function CompaniesPage(){
 
 	}
 
-	//	...
-
 	return(
 	<div className="page">
 
