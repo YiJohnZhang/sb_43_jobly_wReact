@@ -22,7 +22,13 @@ function useControlledForm(INITIAL_FORM_STATE){
 
 	}
 
-	return [formState, updateFormState, resetFormState];
+	function overwriteForm(newFormObject){
+
+		setFormState(newFormObject);
+
+	}
+
+	return [formState, updateFormState, resetFormState, overwriteForm];
 		// later: formic form validation
 
 }

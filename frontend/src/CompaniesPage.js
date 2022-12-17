@@ -49,7 +49,7 @@ function CompaniesPage(){
 	return(
 	<div className="page">
 
-		<form>
+		<form className="listingContainer">
 
 			<input name="searchbar"
 				type="text"

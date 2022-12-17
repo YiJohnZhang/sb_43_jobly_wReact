@@ -46,12 +46,13 @@ class JoblyAPI {
 
   /** Register */
   static async register(){
+	const response = await this.request('/');
 
   }
 
   /** Login */
   static async login(){
-	  
+	  const response = await this.request('/');
   }
   
   /** Return all companies in the database */
@@ -97,8 +98,9 @@ class JoblyAPI {
 	}
 
 	/** get profile details */
-	static async getProfileDetails(){
-		const response = await this.request('users/')
+	static async getProfileDetails(username){
+		const response = await this.request(`users/${username}`);
+		return response.user;
 	}
 
 	/** Update profile */

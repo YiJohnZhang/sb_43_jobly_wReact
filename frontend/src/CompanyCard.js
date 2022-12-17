@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 function CompanyCard({company}){
 
 	const {handle, name, description, numEmployees, logoUrl} = company;
-	console.log(logoUrl)
 
 	return (
-	<div className="listing-container">
+	<div className="listingContainer">
 	<table><tbody><tr>
-		<td>
+		<td class="card80pcnt">
 			<Link to={`/companies/${handle}`}><h1>{name}</h1></Link>
 			<p>{description}</p>
 			<p><strong>Employees</strong>: {numEmployees === null ? "Not Available" : numEmployees}</p>
 		</td>
-		<td>{logoUrl && <image src={logoUrl} alt={`${name} logo`}/>}</td>
+		<td class="card20pcnt">{logoUrl && <img src={logoUrl} alt={`${name} logo`}/>}</td>
 	</tr></tbody></table>		
 	</div>
 	);

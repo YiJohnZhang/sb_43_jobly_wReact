@@ -1,17 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import JoblyAPI from './helpers/api';
 import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import useControlledForm from './hooks/useControlledForm';
 
-function ProfilePage({firstName, lastName, email}){
+function ProfilePage(){
 
 	useAuthenticationDependentRedirect();
 
 	const history = useHistory();
 
-	const INITIAL_FORM_STATE = {firstName, lastName, email, password: ''};
-	const [formState, setFormState] = useControlledForm(INITIAL_FORM_STATE);
+	const INITIAL_FORM_STATE = {firstName:'', lastName: '', email: '', password: ''}
+	const [formState, setFormState, resetFormState, overwriteFormState] = useControlledForm(INITIAL_FORM_STATE);
+
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+
+		const fetchInfo =(async () => {
+
+			const formData = await JoblyAPI.getProfileDetails('USERNAME_PLACEHOLDER');
+				// todo: PLACEHOLDER HERE
+			overwriteFormState(formData)
+			setIsLoading(false);
+				// BONUS: create a `isLoading` Hook
+
+		});
+
+		fetchInfo();
+
+	}, [])
+
+	// const INITIAL_FORM_STATE = async() => await returnInitialFormState();
 
 	function formChangeHandler(evt){
 
@@ -34,45 +54,60 @@ function ProfilePage({firstName, lastName, email}){
 
 	}
 
-	return(
+	return isLoading ? <></>: (
 	<div className="page">
-
 		<form>
+			<table className='formTable'><tbody>
 
-			<label htmlFor="firstName"><strong>First Name</strong>: </label>
-			<input name="firstName"
+			{/* BONUS: make a `useForm()` component that returns a component, changeHandler, submitHandler Hook w/ configurable initial state */}
+
+			<tr>
+				<td><h1>Update your profile, {formState.username}</h1></td>
+			</tr>
+			<tr>
+			<td><label htmlFor="firstName"><strong>First Name</strong>: </label></td>
+			<td><input name="firstName"
 				type="text"
 				onChange={formChangeHandler}
 				value={formState.firstName}
-				/>
-			<br/>
+				/></td>
+			</tr>
 
-			<label htmlFor="lastName"><strong>Last Name</strong>: </label>
-			<input name="lastName"
+			<tr>
+			<td><label htmlFor="lastName"><strong>Last Name</strong>: </label></td>
+			<td><input name="lastName"
 				type="text"
 				onChange={formChangeHandler}
 				value={formState.lastName}
 				/>
-			<br/>
+			</td>
+			</tr>
 
-			<label htmlFor="email"><strong>Email</strong>: </label>
-			<input name="email"
+			<tr>
+			<td><label htmlFor="email"><strong>Email</strong>: </label></td>
+			<td><input name="email"
 				type="text"
 				onChange={formChangeHandler}
 				value={formState.email}
 				/>
-			<br/>
+			</td>
+			</tr>
 
-			<label htmlFor="password"><strong>Change Password</strong>: </label>
-			<input name="password"
+			<tr>
+			<td><label htmlFor="password"><strong>Change Password</strong>: </label></td>
+			<td><input name="password"
 				type="passowrd"
 				onChange={formChangeHandler}
 				value={formState.password}
 				/>
-			<br/>
+			</td>
+			</tr>
 			
-			<button onClick={clickHandler}>Submit Changes</button>
-			
+			<tr><td colSpan={2}>
+				<button className="fullWidth applyButton animation100" onClick={clickHandler}>Submit Changes</button>
+			</td></tr>
+
+			</tbody></table>
 		</form>
 
 	</div>	

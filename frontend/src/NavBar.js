@@ -8,7 +8,7 @@ const ACTIVE_STYLE = {
 }
 
 const NavBar = () => (
-<table><tbody><tr>
+<table id="navigationTable" className='fullWidth'><tbody><tr>
 
 	{/* group 1 (align left) */}
 	<td><NavLink exact activeStyle={ACTIVE_STYLE} to="/">Home</NavLink></td>

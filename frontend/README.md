@@ -12,7 +12,7 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |04|continue jobly (api call). paused because of webpack error.|2022-12-16|14:18 - 15:37|79|
 |05|continue jobly|2022-12-16|17:10 - 17:53|42|
 |06|continue jobly, found out error why database server didn't work|2022-12-16|19:42 - 20:47|65|
-|07|jobly: styling, api (login/signup), applied (add `GET`), local storage|2022-12-16|21:16 - :||
+|07|jobly: styling, api (login/signup), applied (add `GET`), local storage|2022-12-16|21:16 - 23:13||
 |08||2022-12-|: - :||
 |09||2022-12-|: - :||
 ||||**Total Time**| minutes|
@@ -38,12 +38,12 @@ App
 ```
 
 - todo:
-	- profile page
-	- api: login/signup
+	- profile page	`d`+updating...
+	- login/signup
 	- current use w/ local storage
 	- routing: protect routes (uncomment)
 	- applied function
-	- styling
+	- styling	`d`
 
 - in 2 hours time:
 	- api.singup

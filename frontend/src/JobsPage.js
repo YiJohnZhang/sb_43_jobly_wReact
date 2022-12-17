@@ -57,7 +57,7 @@ function JobsPage(){
 	return(
 	<div className="page">
 
-		<form>
+		<form className="listingContainer">
 			<input name="searchbar"
 				type="text"
 				placeholder="Search Jobs by Title..."

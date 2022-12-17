@@ -12,6 +12,85 @@ code {
     monospace;
 }
 
-.page{}
-.listing-container{}
+.animation100{
+	transition: 100ms ease-in-out all;
+	-webkit-transition: 100ms ease-in-out all;
+	-moz-transition: 100ms ease-in-out all;
+	-o-transition: 100ms ease-in-out all;
+}
 
+html{
+	background-color: #F4F4F4;
+}
+
+.fullWidth{
+	width:100%;
+}
+.part75pctWidth{
+	width: 75%;
+	margin:auto;
+}
+
+.textAlignCenter{
+	text-align: center;;
+}
+
+
+#navigationTable{
+	padding: 16px 25px;
+}
+#navigationTable td{
+	text-align: center;;
+}
+
+.page{
+}
+
+.listingContainer{
+	
+	width:75%;
+	margin:auto;
+	margin-bottom: 16px;
+	padding: 16px;
+
+	background-color: #FFF;
+	border-radius: 9px;
+
+}
+	.listingContainer input{
+		width:100%;
+	}
+	.listingContainer table{
+		width:100%;
+	}
+
+	.card80pcnt{
+		width:80%;
+	}
+	.card20pcnt{
+		width:20%;
+	}
+
+.formTable{
+	margin:auto;
+	padding-top: 100px;
+}
+	.applyButton{
+
+		padding: 9px 25px;
+		border-radius: 9px;
+		border: none;
+		background-color: #44cc22;
+		color: #FFF;
+
+	}
+	.appliedButton{
+		background-color: #229922;
+
+	}
+		.applyButton:hover, .appliedButton:hover{
+			opacity:0.81;
+		}
+		.applyButton:active, .appliedButton:active{
+			opacity:0.64;
+		}

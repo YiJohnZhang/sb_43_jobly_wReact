@@ -56,36 +56,47 @@ function OnboardingPage({onboardingMethod}){
 	<div className="page">
 	
 		<form>
+			<table className='formTable'><tbody>
+				
+			{/* BONUS: make a `useForm()` component that returns a component, changeHandler, submitHandler Hook w/ configurable initial state */}
 
-			<label htmlFor="username"><strong>Username</strong>: </label>
-			<input name="username"
+			<tr>
+			<td><label htmlFor="username"><strong>Username</strong>: </label></td>
+			<td><input name="username"
 				type="text"
 				onChange={formChangeHandler}
 				value={formState.username}
 				/>
-			<br/>
+			</td>
+			</tr>
 
-			<label htmlFor="password"><strong>Password</strong>: </label>
-			<input name="password"
+			<tr>
+			<td><label htmlFor="password"><strong>Password</strong>: </label></td>
+			<td><input name="password"
 				type="text"
 				onChange={formChangeHandler}
 				value={formState.password}
 				/>
-			<br/>
+			</td>
+			</tr>
 
+			<tr>
 			{onboardingMethod === "signup" && (
 			<React.Fragment>
-				<label htmlFor="email"><strong>Email</strong>: </label>
-				<input name="email"
+				<td><label htmlFor="email"><strong>Email</strong>: </label></td>
+				<td><input name="email"
 					type="text"
 					onChange={formChangeHandler}
 					value={formState.email}
-					/>
-				<br/>
+					/></td>
 			</React.Fragment>)}
+			</tr>
+			
+			<tr><td colSpan={2}>
+				<button className="fullWidth applyButton animation100" onClick={clickHandler}>{onboardingMethod === 'login' ? "Login" : "Register"}</button>
+			</td></tr>
 
-			<button onClick={clickHandler}>{onboardingMethod === 'login' ? "Login" : "Register"}</button>
-
+			</tbody></table>
 		</form>
 		
 	</div>
