@@ -16,8 +16,8 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |08||2022-12-|: - :||
 |09||2022-12-|: - :||
 ||||**Total Time**| minutes|
-06	07
-395 
+07	08
+512 
 
 ```sh
 App
