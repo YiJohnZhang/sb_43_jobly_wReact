@@ -13,15 +13,15 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |05|continue jobly|2022-12-16|17:10 - 17:53|42|
 |06|continue jobly, found out error why database server didn't work|2022-12-16|19:42 - 20:47|65|
 |07|jobly: styling, profile editing|2022-12-16|21:16 - 23:13|117|
-|08|applied (add `GET` for users-jobs join), api (login/signup), local storage|2022-12-17|10:57 - 11:56||
-|09|continue `08` goals + |2022-12-17|: - :||
+|08|applied (add `GET` for users-jobs join), api (login/signup), local storage|2022-12-17|10:57 - 11:56|59|
+|09|localStorage, applied toggling, login & singup routes  |2022-12-17|15:02 - :||
 |10||2022-12-17|: - :||
 |11|cleanup `README.md`|2022-12-17|: - :||
 |12||2022-12-|: - :||
 |13||2022-12-|: - :||
 ||||**Total Time**| minutes|
-07	08
-512 
+08	09
+571 
 
 ```sh
 App
@@ -42,10 +42,10 @@ App
 ```
 
 - todo:
-	- profile page	`d`+updating...
-	- login/signup
+	- profile page	`d`
 	- current use w/ local storage
 	- routing: protect routes (uncomment)
+	- login/signup	
 	- applied function
 	- styling	`d`
 
