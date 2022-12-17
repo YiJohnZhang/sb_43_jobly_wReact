@@ -28,7 +28,7 @@ function ProfilePage({firstName, lastName, email}){
 		const result = JoblyAPI.updateProfile("USERNAME_PLACEHOLDER", formState);
 			// todo: PLACEHOLDER HERE
 
-		if(result.user)
+		if(result.data)
 			history.push('/profile');
 			// how to referesh?
 
@@ -47,6 +47,7 @@ function ProfilePage({firstName, lastName, email}){
 				onChange={formChangeHandler}
 				value={formState.firstName}
 				/>
+			<br/>
 
 			<label htmlFor="lastName"><strong>Last Name</strong>: </label>
 			<input name="lastName"
@@ -54,6 +55,7 @@ function ProfilePage({firstName, lastName, email}){
 				onChange={formChangeHandler}
 				value={formState.lastName}
 				/>
+			<br/>
 
 			<label htmlFor="email"><strong>Email</strong>: </label>
 			<input name="email"
@@ -61,6 +63,7 @@ function ProfilePage({firstName, lastName, email}){
 				onChange={formChangeHandler}
 				value={formState.email}
 				/>
+			<br/>
 
 			<label htmlFor="password"><strong>Confirm Password</strong>: </label>
 			<input name="password"
@@ -68,6 +71,7 @@ function ProfilePage({firstName, lastName, email}){
 				onChange={formChangeHandler}
 				value={formState.password}
 				/>
+			<br/>
 			
 			<button onClick={clickHandler}>Submit Changes</button>
 			

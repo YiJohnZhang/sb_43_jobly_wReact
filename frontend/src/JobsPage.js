@@ -18,15 +18,23 @@ function JobsPage(){
 
 		async function searchJobs(){
 			
-			const jobList = await JoblyAPI.searchJobs(formState.searchbar);
-			setMatchingJobList(jobList);
+			try{
+				const jobList = await JoblyAPI.searchJobs(formState.searchbar);
+				setMatchingJobList(jobList);
+			}catch(error){
+				console.error(error);
+			}
 
 		}
 
 		async function returnAllJobs(){
-
-			const jobList = await JoblyAPI.returnAllJobs();
-			setMatchingJobList(jobList);
+			
+			try{
+				const jobList = await JoblyAPI.returnAllJobs();
+				setMatchingJobList(jobList);
+			}catch(error){
+				console.error(error);
+			}
 
 		}
 

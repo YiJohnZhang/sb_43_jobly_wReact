@@ -12,6 +12,7 @@ function CompanyPage(){
 
 	const {companyHandle} = useParams()
 
+	
 
 
 	return(

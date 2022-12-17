@@ -18,10 +18,10 @@ function App() {
 	<ApplicationContext.Provider value={'asfd'}>
 		<NavBar/>
 		<Switch>
-			<Route path="/company/:companyHandle">
+			<Route path="/companies/:companyHandle">
 				<CompanyPage />
 			</Route>
-			<Route exact path="/company/">
+			<Route exact path="/companies/">
 				<CompaniesPage />
 			</Route>
 			<Route path="/jobs">
@@ -39,7 +39,7 @@ function App() {
 			<Route exact path="/">
 				<HomePage />
 			</Route>
-			<Redirect path="/" />
+			<Redirect to="/" />
 		</Switch>
 	</ApplicationContext.Provider>
 	);

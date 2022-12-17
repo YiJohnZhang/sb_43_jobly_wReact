@@ -1,4 +1,6 @@
 import axios from "axios";
+// import { response } from "express";
+	// https://stackoverflow.com/a/73318202
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -12,7 +14,9 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class JoblyAPI {
   // the token for interactive with the API will be stored here.
-  static token;
+  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -84,14 +88,15 @@ class JoblyAPI {
 	// and `/token` is the login route...
 	static async updateProfile(username, newUserData){
 		const response = await this.request(`users/${username}`, newUserData, 'patch');
-		return response;		
+		return response.user;		
 	}
 
 }
 
 // for now, put token ("testuser" / "password" on class)
-JoblyAPI.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// JoblyAPI.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// JoblyAPI.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 export default JoblyAPI;
