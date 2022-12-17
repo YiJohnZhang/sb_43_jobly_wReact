@@ -11,7 +11,7 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |03|continue jobly (pages skeleton)|2022-12-16|09:12 - 10:43|91|
 |04|continue jobly (api call). paused because of webpack error.|2022-12-16|14:18 - 15:37|79|
 |05|continue jobly|2022-12-16|17:10 - 17:53|42|
-|06||2022-12-|: - :||
+|06|continue jobly, database server works|2022-12-16|19:42 - :||
 |07||2022-12-|: - :||
 |08||2022-12-|: - :||
 |09||2022-12-|: - :||
