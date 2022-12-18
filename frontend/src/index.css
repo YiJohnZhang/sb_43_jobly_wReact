@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+a{
+	color: #2266cc;
+}
+	a:visted{
+		color: #223399;
+	}
+		
 .animation100{
 	transition: 100ms ease-in-out all;
 	-webkit-transition: 100ms ease-in-out all;

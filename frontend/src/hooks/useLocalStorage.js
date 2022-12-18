@@ -40,7 +40,7 @@
 
 // }
 
-function useLocalStorage(propertyKey, defaultValue = ''){
+function useLocalStorage(propertyKey, defaultValue = undefined){
 
 	let propertyValue = localStorage.getItem(propertyKey) || defaultValue;
 
@@ -50,12 +50,7 @@ function useLocalStorage(propertyKey, defaultValue = ''){
 	 */
 	 function setProperty(newValue){
 
-		// setState((state) => {console.log('run'); return propertyValue});
-		console.log(`setProperty, ${propertyKey} before: ${propertyValue}`);
-		console.log(`setProperty, Passed: ${propertyKey}, ${newValue}`);
 		localStorage.setItem(propertyKey, newValue);
-
-		console.log(`${propertyKey} after: ${localStorage.getItem(propertyKey)}`)
 
 	}
 

@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import useControlledForm from './hooks/useControlledForm';
 import useLocalStorage from './hooks/useLocalStorage';
 import JoblyAPI from './helpers/api';
+import UserDetailsContext from './context/UserDetailsContext';
 
 // import React from 'react';
 // import { Link } from 'react-router-dom';
 
 function OnboardingPage({onboardingMethod}){
 
-	useAuthenticationDependentRedirect(false);
-
 	const history = useHistory();
 	const [jwt, setJWT] = useLocalStorage('jwt');
+	const {setSessionUsername} = useContext(UserDetailsContext);
+
+
+	useAuthenticationDependentRedirect(false);
 
 	let INITIAL_FORM_STATE;
 	if(onboardingMethod === 'login'){
@@ -24,7 +27,7 @@ function OnboardingPage({onboardingMethod}){
 			password: ''
 		}
 
-	}else{
+	}else if(onboardingMethod === 'signup'){
 
 		INITIAL_FORM_STATE = {
 			username: '',
@@ -55,8 +58,13 @@ function OnboardingPage({onboardingMethod}){
 
 			const response =  await JoblyAPI.register(formState);
 
-			if(response)
+			if(response){
+
+				setJWT(response.token);
+				setSessionUsername(response.username);
 				history.push('/companies');
+
+			}
 
 		}else if(onboardingMethod === 'login'){
 
@@ -68,8 +76,8 @@ function OnboardingPage({onboardingMethod}){
 
 			}else{
 
-				console.log(response);
-				setJWT(response);
+				setJWT(response.token);
+				setSessionUsername(response.username);
 				history.push('/companies');
 			
 			}
@@ -82,7 +90,7 @@ function OnboardingPage({onboardingMethod}){
 	<div className="page">
 	
 		<form>
-			<table className='formTable'><tbody>
+			<table className="formTable"><tbody>
 				
 			{/* BONUS: make a `useForm()` component that returns a component, changeHandler, submitHandler Hook w/ configurable initial state */}
 

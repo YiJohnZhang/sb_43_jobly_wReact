@@ -15,11 +15,11 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |07|jobly: styling, profile editing|2022-12-16|21:16 - 23:13|117|
 |08|applied (add `GET` for users-jobs join), api (login/signup), local storage|2022-12-17|10:57 - 11:56|59|
 |09|localStorage, applied toggling, login & singup routes. argth. **still can't get local storage to work** |2022-12-17|15:02 - 16:38||
-|10|**iohlaudfsaifhjdklosashdfjkl finally got `localStorage` working**|2022-12-17|20:04 - 2:||
+|10|**iohlaudfsaifhjdklosashdfjkl finally got `localStorage` working**. login/signup & logout working,  |2022-12-17|20:04 - 22:21||
 |11|cleanup `README.md`|2022-12-17|: - :||
 |12||2022-12-|: - :||
 |13||2022-12-|: - :||
-||||**Total Time**| minutes|
+||||**Total Time**| minutes+3 hrs (for debugging `useLocalStorage` hook|
 08	09
 571 
 
@@ -42,32 +42,9 @@ App
 ```
 
 - todo:
-	- profile page	`d`
-	- current use w/ local storage
-	- routing: protect routes (uncomment)
-	- login/signup	
-	- applied function
-	- styling	`d`
-
-- in 2 hours time:
-	- api.singup
-	- applied function
-	- styling
-
-
-- `navbar.js`: authcontext for nvabar (S3)
-
-- company & jobs	
-- s6: user + protecc views
-- s9: job applications
-- s10: deploy
-
-- routes to protect: basically all except for `/`, `/login`, and `/signup`; last two is protected if a user session exists.
-
-
-## Specifications
-- 
-- 
-- **Further Study**
-  - 
-  - 
+	- profile page							`d`
+	- current use w/ local storage+context	`d`
+	- routing: protect routes (uncomment)	`d`
+	- login/signup							`d`
+	- applied function / job applications function
+	- styling								`d`

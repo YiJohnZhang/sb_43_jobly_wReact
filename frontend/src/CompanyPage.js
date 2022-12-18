@@ -12,7 +12,7 @@ function CompanyPage(){
 	useAuthenticationDependentRedirect();
 
 	const {companyHandle} = useParams();
-	const [company, setCompany] = useState({jobs:['loading']});
+	const [company, setCompany] = useState(false);
 
 	useEffect(() => {
 
@@ -31,10 +31,11 @@ function CompanyPage(){
 
 	}, [companyHandle]);
 
-	return(
+	return company == false ? <></> :(
 	<div className="page">
 	
-		<CompanyCard company={company} />
+		<CompanyCard company={company}
+			key={company.handle} />
 		
 		{company.jobs.map((jobListing) => (
 			<JobCard jobListing={jobListing}

@@ -14,7 +14,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class JoblyAPI {
   // the token for interactive with the API will be stored here.
-  static token = "";
+  static token = localStorage.getItem('jwt');
 	//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
   static async request(endpoint, data = {}, method = "get") {
@@ -57,8 +57,8 @@ class JoblyAPI {
 	  if(response.token){
 		  this.token = response.token;
 	  }
-	  console.log(response.token);
-	  return response.token;
+	  
+	  return response;
 
 	}catch(error){
 
@@ -108,7 +108,6 @@ class JoblyAPI {
   static async getAppliedJobs(username){
 	// change it to "this username"
 	const response = await this.request(`users/${username}/jobs`);
-	console.log(response.appliedJobs);
 	return response.appliedJobs;
   }
 

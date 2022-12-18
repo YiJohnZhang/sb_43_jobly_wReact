@@ -3,28 +3,25 @@ import { useHistory } from "react-router-dom";
 /**	useAuthenticationDependentRedirect
  *	A hook for client-side redirecting of pages to protect content. Also validates authentication.
  *	@param {boolean} authenticationRequired 
- *		does this page require the present or absence of valid authentication?
+ *		does this page require the presence, absence, or doesn't care of a webtoken?
  */
 function useAuthenticationDependentRedirect(authenticationRequired = true, redirectPath = '/'){
 
-	// validate authentication token
-
 	const history = useHistory();
-/*
-	// sign in required, not signed in
-	if(authenticationRequired)
-		// check user session is signed out
-			history.push(redirectPath)
+
+	// sign in required, go to home if not signed in
+	if(authenticationRequired && !localStorage.getItem('jwt'))
+		history.goBack();
 	
 	// sign in or signed out doesn't matter
-	if(authenticationRequired === undefined)
-		history.push(redirectPath)
+	if(authenticationRequired === undefined){
+		return;
+	}
 
-	// sign out required, signed in
-	if(!authenticationRequired)
-		// check user session is signed
-			history.goBack();
-*/
+	// sign out required, return to previous page if signed in
+	if(authenticationRequired === false && localStorage.getItem('jwt'))
+		history.goBack();
+
 }
 
 export default useAuthenticationDependentRedirect;

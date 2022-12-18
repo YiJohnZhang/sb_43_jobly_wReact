@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
@@ -9,13 +9,41 @@ import ProfilePage from './ProfilePage';
 import HomePage from './HomePage';
 import JobsPage from './JobsPage';
 import OnboardingPage from './OnboardingPage';
+import LogoutComponent from './LogoutComponent';
 
-import AuthenticationContext from './context/AuthenticationContext';
+import UserDetailsContext from './context/UserDetailsContext';
+import JoblyAPI from './helpers/api';
 
 function App() {
 
+	const [sessionUsername, setSessionUsername] = useState(undefined);
+	const [appliedJobs, setAppliedJobs] = useState();
+
+	useEffect(() => {
+	
+		async function returnJobsList(){
+
+			if(sessionUsername === undefined)
+				return [];
+
+			const response = await JoblyAPI.getAppliedJobs(sessionUsername);
+			const userAppliedJobs = response.map((element) => element.job_id);
+			console.log(userAppliedJobs);
+			console.log(new Set(userAppliedJobs))
+			// const jobSet = new Set(response);
+			// console.log(jobSet);
+			// return jobSet;
+
+			return new Set(userAppliedJobs);
+
+		}
+		
+		setAppliedJobs(returnJobsList());
+
+	}, [sessionUsername]);
+
 	return (
-	<AuthenticationContext.Provider value={'asfd'}>
+	<UserDetailsContext.Provider value={{sessionUsername, setSessionUsername, appliedJobs, setAppliedJobs}}>
 		<NavBar/>
 		<Switch>
 			<Route path="/companies/:companyHandle">
@@ -36,12 +64,15 @@ function App() {
 			<Route path="/signup">
 				<OnboardingPage onboardingMethod="signup" />
 			</Route>
+			<Route path="/logout">
+				<LogoutComponent />
+			</Route>
 			<Route exact path="/">
 				<HomePage />
 			</Route>
 			<Redirect to="/" />
 		</Switch>
-	</AuthenticationContext.Provider>
+	</UserDetailsContext.Provider>
 	);
 }
 

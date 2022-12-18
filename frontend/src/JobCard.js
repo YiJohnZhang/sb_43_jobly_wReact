@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import UserDetailsContext from './context/UserDetailsContext';
 
 function JobCard({jobListing, handle, name}){
 
-	const {title, salary, equity, companyHandle, companyName } = jobListing;
+	const {id, title, salary, equity, companyHandle, companyName } = jobListing;
+	const {appliedJobs, setAppliedJobs} = useContext(UserDetailsContext);
 	
 	function clickHandler(evt){
 
 		evt.preventDefault();
+		// toggle job application to api.
+		// set appliedjobs.
 
 	}
 
@@ -18,7 +23,7 @@ function JobCard({jobListing, handle, name}){
 			<li><strong>Equity</strong>: {equity === null ? 0 : equity}</li>
 			<li><strong>Listed By</strong>: <Link to={`/companies/${companyHandle || handle}`}>{companyName || name}</Link></li>
 		</ul>
-		<button className="applyButton animation100" onClick={clickHandler}>Apply</button>
+		<button className={`applyButton animation100 ${id} ${false ? 'applyButton':'appliedButton'}`} onClick={clickHandler}>Apply</button>
 		{/* Note: There is no end-point that queries the database to check whether or not the user has applied to this job or not. Therefore this is just for show */}
 	</div>
 	);
