@@ -16,50 +16,34 @@ import JoblyAPI from './helpers/api';
 
 function App() {
 
-	const [sessionUsername, setSessionUsername] = useState(undefined);
-	let appliedJobs;
+	// Session Username Cookie + Context
+	const [sessionUsername, setSessionUsername] = useState(localStorage.getItem('sessionUsername') || undefined);
+	const [appliedJobs, setAppliedJobs] = useState(new Set([]));
+
+	useEffect(() => {
+
+		async function getAppliedJobs(){
+
+			// set appliedJobs
+			const response = await JoblyAPI.getAppliedJobs(sessionUsername);
+			const userAppliedJobs = response.map((element) => element.job_id);
+
+			setAppliedJobs(new Set(userAppliedJobs));
+
+		}
+		
+		getAppliedJobs();
+
+	}, [sessionUsername])
 
 	function isApplied(jobID){
-		console.log(appliedJobs)
-		console.log(jobID);
-		
-		console.log(appliedJobs.has(jobID));
+
+		console.log(appliedJobs);
+
 		return appliedJobs.has(jobID);
 
 	}
 
-	function setAppliedJobs(jobID){
-
-		if(appliedJobs.has(jobID))
-			appliedJobs.delete(jobID);
-		
-		appliedJobs.add(jobID);
-
-	}
-
-	useEffect(() => {
-	
-		async function returnJobsList(){
-
-			if(sessionUsername === undefined)
-				return [];
-
-			const response = await JoblyAPI.getAppliedJobs(sessionUsername);
-			const userAppliedJobs = response.map((element) => element.job_id);
-			
-			console.log(userAppliedJobs);
-			console.log(new Set(userAppliedJobs))
-			// const jobSet = new Set(response);
-			// console.log(jobSet);
-			// return jobSet;
-			appliedJobs = new Set(userAppliedJobs);
-			return new Set(userAppliedJobs);
-
-		}
-		
-		returnJobsList();
-
-	}, [sessionUsername]);
 
 	return (
 	<UserDetailsContext.Provider value={{sessionUsername, setSessionUsername, appliedJobs, isApplied, setAppliedJobs}}>

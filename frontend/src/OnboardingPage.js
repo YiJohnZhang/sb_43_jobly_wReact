@@ -14,8 +14,9 @@ function OnboardingPage({onboardingMethod}){
 
 	const history = useHistory();
 	const [jwt, setJWT] = useLocalStorage('jwt');
+	const [localSessionUsername, setLocalSessionUsername] = useLocalStorage('sessionUsername');
 	const {setSessionUsername} = useContext(UserDetailsContext);
-
+	const [localAppliedJobs, setLocalAppliedJobs] = useLocalStorage('appliedJobs');
 
 	useAuthenticationDependentRedirect(false);
 
@@ -54,16 +55,13 @@ function OnboardingPage({onboardingMethod}){
 
 		evt.preventDefault();
 
-		function loginSuccessful(response){
+		async function loginSuccessful(response){
 
 			setJWT(response.token);
+			setLocalSessionUsername(response.username);
 			setSessionUsername(response.username);
 
-			// set appliedJobs ehre
-			
-
 			history.push('/companies');
-
 
 		}
 
