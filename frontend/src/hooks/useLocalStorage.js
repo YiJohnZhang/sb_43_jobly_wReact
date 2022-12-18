@@ -1,46 +1,65 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-function useLocalStorage(propertyKey, defaultValue){
+// function useLocalStorage(propertyKey, defaultValue = ''){
 
-	const [value, setValue] = useState(() => {
+// 	const [state, setState] = useState(() => {
 
-		let parsedValue;
+// 		const initialState = localStorage.getItem(propertyKey) || defaultValue;
+// 		console.log(`setProperty, initialState: ${initialState}`)
+// 		return initialState;
 
-		try{
+// 	});
 
-			parsedValue = JSON.parse(window.localStorage.getItem(propertyKey) || defaultValue);
+// 	useEffect(() => {
 
-		}catch(error){
-		}
+// 		if(state){
+// 			localStorage.setItem(propertyKey, state);
+// 		console.log(`Effect: ${state}`);}
 
-		return parsedValue;
+// 	}, [state]);
 
-	});
+// 	// /**	setProperty(propertyValue)
+// 	//  *	Set the value of the Local Storage `propertyKey` with `propertyValue`.
+// 	//  *	@param {*} propertyValue
+// 	//  */
+// 	 function setProperty(propertyValue){
+
+// 		// setState((state) => {console.log('run'); return propertyValue});
+// 		console.log(`setProperty, ${propertyKey} before: ${state}`);
+// 		console.log(`setProperty, Passed: ${propertyKey}, ${propertyValue}`);
+// 		setState(() => propertyValue);
+// 		setState(() => {
+// 			console.log('setProperty, asfd')
+
+// 		});
+// 		console.log(`${propertyKey} after: ${state}`)
+
+// 	}
+
+// 	return [state, setProperty];
+
+// }
+
+function useLocalStorage(propertyKey, defaultValue = ''){
+
+	let propertyValue = localStorage.getItem(propertyKey) || defaultValue;
 
 	/**	setProperty(propertyValue)
 	 *	Set the value of the Local Storage `propertyKey` with `propertyValue`.
-	 *	@param {*} propertyValue
+	 *	@param {*} newValue
 	 */
-	 function setProperty(propertyValue){
+	 function setProperty(newValue){
 
 		// setState((state) => {console.log('run'); return propertyValue});
-		const newPropertyValue = propertyValue;
-		console.log(newPropertyValue === propertyValue)
-		setValue(() => newPropertyValue);
-		console.log(value);
-		console.log(propertyKey)
-		console.log(propertyValue);
+		console.log(`setProperty, ${propertyKey} before: ${propertyValue}`);
+		console.log(`setProperty, Passed: ${propertyKey}, ${newValue}`);
+		localStorage.setItem(propertyKey, newValue);
+
+		console.log(`${propertyKey} after: ${localStorage.getItem(propertyKey)}`)
 
 	}
 
-	useEffect(() => {
-
-		window.localStorage.setItem(propertyKey, JSON.stringify(value));
-		console.log(value);
-
-	}, [value])
-
-	return [value, setProperty];
+	return [propertyValue, setProperty];
 
 }
 

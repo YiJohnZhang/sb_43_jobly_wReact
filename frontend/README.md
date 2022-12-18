@@ -15,7 +15,7 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |07|jobly: styling, profile editing|2022-12-16|21:16 - 23:13|117|
 |08|applied (add `GET` for users-jobs join), api (login/signup), local storage|2022-12-17|10:57 - 11:56|59|
 |09|localStorage, applied toggling, login & singup routes. argth. **still can't get local storage to work** |2022-12-17|15:02 - 16:38||
-|10||2022-12-17|: - :||
+|10|**iohlaudfsaifhjdklosashdfjkl finally got `localStorage` working**|2022-12-17|20:04 - 2:||
 |11|cleanup `README.md`|2022-12-17|: - :||
 |12||2022-12-|: - :||
 |13||2022-12-|: - :||
