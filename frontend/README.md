@@ -16,12 +16,13 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |08|applied (add `GET` for users-jobs join), api (login/signup), local storage|2022-12-17|10:57 - 11:56|59|
 |09|localStorage, applied toggling, login & singup routes. argth. **still can't get local storage to work** |2022-12-17|15:02 - 16:38|96|
 |10|**iohlaudfsaifhjdklosashdfjkl finally got `localStorage` working**. login/signup & logout working, just need to finish up applied/apply job|2022-12-17|20:04 - 22:21|137|
-|11|apply to job functionality|2022-12-18|10:43 - 11:23||
-|12|cleanup `README.md`|2022-12-18|: - :||
-|13||2022-12-|: - :||
+|11|apply to job functionality|2022-12-18|10:43 - 11:23|40|
+|12|continue job application function|2022-12-18|13:53 - :||
+|13||2022-12-18|1: - :||
+|14|cleanup `README.md`|2022-12-18|1: - :||
 ||||**Total Time**| minutes+3 hrs (for debugging `useLocalStorage` hook|
-10	11
-804
+11	12
+844
 
 ```sh
 App
@@ -42,9 +43,4 @@ App
 ```
 
 - todo:
-	- profile page							`d`
-	- current use w/ local storage+context	`d`
-	- routing: protect routes (uncomment)	`d`
-	- login/signup							`d`
 	- applied function / job applications function
-	- styling								`d`
