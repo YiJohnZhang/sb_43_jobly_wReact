@@ -17,7 +17,25 @@ import JoblyAPI from './helpers/api';
 function App() {
 
 	const [sessionUsername, setSessionUsername] = useState(undefined);
-	const [appliedJobs, setAppliedJobs] = useState();
+	let appliedJobs;
+
+	function isApplied(jobID){
+		console.log(appliedJobs)
+		console.log(jobID);
+		
+		console.log(appliedJobs.has(jobID));
+		return appliedJobs.has(jobID);
+
+	}
+
+	function setAppliedJobs(jobID){
+
+		if(appliedJobs.has(jobID))
+			appliedJobs.delete(jobID);
+		
+		appliedJobs.add(jobID);
+
+	}
 
 	useEffect(() => {
 	
@@ -28,22 +46,23 @@ function App() {
 
 			const response = await JoblyAPI.getAppliedJobs(sessionUsername);
 			const userAppliedJobs = response.map((element) => element.job_id);
+			
 			console.log(userAppliedJobs);
 			console.log(new Set(userAppliedJobs))
 			// const jobSet = new Set(response);
 			// console.log(jobSet);
 			// return jobSet;
-
+			appliedJobs = new Set(userAppliedJobs);
 			return new Set(userAppliedJobs);
 
 		}
 		
-		setAppliedJobs(returnJobsList());
+		returnJobsList();
 
 	}, [sessionUsername]);
 
 	return (
-	<UserDetailsContext.Provider value={{sessionUsername, setSessionUsername, appliedJobs, setAppliedJobs}}>
+	<UserDetailsContext.Provider value={{sessionUsername, setSessionUsername, appliedJobs, isApplied, setAppliedJobs}}>
 		<NavBar/>
 		<Switch>
 			<Route path="/companies/:companyHandle">

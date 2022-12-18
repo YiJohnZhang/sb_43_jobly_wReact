@@ -54,17 +54,26 @@ function OnboardingPage({onboardingMethod}){
 
 		evt.preventDefault();
 
+		function loginSuccessful(response){
+
+			setJWT(response.token);
+			setSessionUsername(response.username);
+
+			// set appliedJobs ehre
+			
+
+			history.push('/companies');
+
+
+		}
+
+
 		if(onboardingMethod === 'signup'){
 
 			const response =  await JoblyAPI.register(formState);
 
-			if(response){
-
-				setJWT(response.token);
-				setSessionUsername(response.username);
-				history.push('/companies');
-
-			}
+			if(response)
+				loginSuccessful(response);
 
 		}else if(onboardingMethod === 'login'){
 
@@ -75,10 +84,8 @@ function OnboardingPage({onboardingMethod}){
 				setShowErrorMessage(true);
 
 			}else{
-
-				setJWT(response.token);
-				setSessionUsername(response.username);
-				history.push('/companies');
+				
+				loginSuccessful(response);
 			
 			}
 
@@ -144,7 +151,7 @@ function OnboardingPage({onboardingMethod}){
 			{showErrorMessage && <tr><td colSpan={2}>Invalid username/password combination.</td></tr>}
 			
 			<tr><td colSpan={2}>
-				<button className="fullWidth applyButton animation100" onClick={clickHandler}>{onboardingMethod === 'login' ? "Login" : "Register"}</button>
+				<button className="styledButton applyButton fullWidth animation100" onClick={clickHandler}>{onboardingMethod === 'login' ? "Login" : "Register"}</button>
 			</td></tr>
 
 			</tbody></table>

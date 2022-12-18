@@ -16,7 +16,11 @@ function LogoutComponent(){
 		//	how do i make this a purely behavior and no rendering component?
 		setSessionUsername(undefined);
 		localStorage.removeItem('jwt');
+		localStorage.removeItem('currentUser');
+		localStorage.removeItem('jobsApplied');
 		history.push('/');
+		setTimeout(() => {history.go(0)}, 100);
+		// history.go(0);
 
 	}
 

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import JoblyAPI from './helpers/api';
 import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import useControlledForm from './hooks/useControlledForm';
+import UserDetailsContext from './context/UserDetailsContext';
 
 function ProfilePage(){
 
@@ -12,6 +13,7 @@ function ProfilePage(){
 
 	const INITIAL_FORM_STATE = {firstName:'', lastName: '', email: '', password: ''}
 	const [formState, setFormState, resetFormState, overwriteFormState] = useControlledForm(INITIAL_FORM_STATE);
+	const {sessionUsername} = useContext(UserDetailsContext);
 
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -19,8 +21,7 @@ function ProfilePage(){
 
 		async function prePopulateFormData() {
 
-			const formData = await JoblyAPI.getProfileDetails('testuser');
-				// todo: PLACEHOLDER HERE
+			const formData = await JoblyAPI.getProfileDetails(sessionUsername);
 			overwriteFormState(formData)
 			setIsLoading(false);
 				// BONUS: create a `isLoading` Hook
@@ -44,8 +45,7 @@ function ProfilePage(){
 
 		evt.preventDefault();
 
-		const result = JoblyAPI.updateProfile("testuser", formState);
-			// todo: PLACEHOLDER HERE
+		const result = JoblyAPI.updateProfile(sessionUsername, formState);
 
 		if(result)
 			history.push('/');
@@ -102,7 +102,7 @@ function ProfilePage(){
 			</tr>
 			
 			<tr><td colSpan={2}>
-				<button className="fullWidth applyButton animation100" onClick={clickHandler}>Submit Changes</button>
+				<button className="styledButton applyButton fullWidth animation100" onClick={clickHandler}>Submit Changes</button>
 			</td></tr>
 
 			</tbody></table>

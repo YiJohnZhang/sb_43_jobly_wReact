@@ -37,6 +37,9 @@ html{
 	width: 75%;
 	margin:auto;
 }
+.part100pxWidth{
+	width:100px;
+}
 
 .textAlignCenter{
 	text-align: center;;
@@ -82,13 +85,17 @@ html{
 	margin:auto;
 	padding-top: 100px;
 }
-	.applyButton{
+	.styledButton{
 
 		padding: 9px 25px;
 		border-radius: 9px;
 		border: none;
-		background-color: #44cc22;
 		color: #FFF;
+
+	}
+	.applyButton{
+
+		background-color: #44cc22;
 
 	}
 	.appliedButton{
