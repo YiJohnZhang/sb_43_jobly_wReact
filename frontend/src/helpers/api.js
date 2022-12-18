@@ -14,13 +14,8 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class JoblyAPI {
   // the token for interactive with the API will be stored here.
-  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-  "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-  "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
-
-//   static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-//   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-//   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  static token = "";
+	//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0.FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -46,20 +41,30 @@ class JoblyAPI {
 
   /** Register */
   static async register(newUserData){
-	const response = await this.request('/auth', newUserData, 'post');
+	  
+	const response = await this.request('auth/register', newUserData, 'post');
+	return response;
 
   }
 
   /** Login */
   static async login(userLoginData){
 
-	  const response = await this.request('/token', userLoginData, 'post');
+	try{
 
+	  const response = await this.request('auth/token', userLoginData, 'post');
+	
 	  if(response.token){
-
+		  this.token = response.token;
 	  }
+	  console.log(response.token);
+	  return response.token;
 
-	  return;
+	}catch(error){
+
+		return {error: 'Invalid username/password'};
+
+	}
 
   }
   

@@ -7,12 +7,12 @@ function CompanyCard({company}){
 	return (
 	<div className="listingContainer">
 	<table><tbody><tr>
-		<td class="card80pcnt">
+		<td className="card80pcnt">
 			<Link to={`/companies/${handle}`}><h1>{name}</h1></Link>
 			<p>{description}</p>
 			<p><strong>Employees</strong>: {numEmployees === null ? "Not Available" : numEmployees}</p>
 		</td>
-		<td class="card20pcnt">{logoUrl && <img src={logoUrl} alt={`${name} logo`}/>}</td>
+		<td className="card20pcnt">{logoUrl && <img src={logoUrl} alt={`${name} logo`}/>}</td>
 	</tr></tbody></table>		
 	</div>
 	);

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
  *	@param {boolean} authenticationRequired 
  *		does this page require the present or absence of valid authentication?
  */
-function useAuthenticationDependentRedirect(authenticationRequired = true){
+function useAuthenticationDependentRedirect(authenticationRequired = true, redirectPath = '/'){
 
 	// validate authentication token
 
@@ -14,8 +14,12 @@ function useAuthenticationDependentRedirect(authenticationRequired = true){
 	// sign in required, not signed in
 	if(authenticationRequired)
 		// check user session is signed out
-			history.push('/')
+			history.push(redirectPath)
 	
+	// sign in or signed out doesn't matter
+	if(authenticationRequired === undefined)
+		history.push(redirectPath)
+
 	// sign out required, signed in
 	if(!authenticationRequired)
 		// check user session is signed

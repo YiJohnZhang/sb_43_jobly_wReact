@@ -61,7 +61,8 @@ function CompaniesPage(){
 		</form>
 
 		{matchingCompanyList.map((company) => (
-			<CompanyCard key={company.companyHandle} company={company}/>
+			<CompanyCard company={company}
+				key={company.handle} />
 		))}
 
 		

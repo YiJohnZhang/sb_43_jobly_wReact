@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import useAuthenticationDependentRedirect from './hooks/useAuthenticationDependentRedirect';
 import useControlledForm from './hooks/useControlledForm';
+import useLocalStorage from './hooks/useLocalStorage';
 import JoblyAPI from './helpers/api';
 
 // import React from 'react';
@@ -10,7 +11,10 @@ import JoblyAPI from './helpers/api';
 
 function OnboardingPage({onboardingMethod}){
 
+	useAuthenticationDependentRedirect(false);
+
 	const history = useHistory();
+	const [jwt, setJWT] = useLocalStorage('jwt');
 
 	let INITIAL_FORM_STATE;
 	if(onboardingMethod === 'login'){
@@ -25,12 +29,15 @@ function OnboardingPage({onboardingMethod}){
 		INITIAL_FORM_STATE = {
 			username: '',
 			password: '',
-			email: ''
+			email: '',
+			firstName: '',
+			lastName: ''
 		}
 
 	}
 	
 	const [formState, setFormState] = useControlledForm(INITIAL_FORM_STATE);
+	const [showErrorMessage, setShowErrorMessage] = useState(false);
 
 	function formChangeHandler(evt){
 
@@ -40,32 +47,36 @@ function OnboardingPage({onboardingMethod}){
 
 	}
 
-	function clickHandler(evt){
+	async function clickHandler(evt){
 
 		evt.preventDefault();
 
 		if(onboardingMethod === 'signup'){
 
-			const response = JoblyAPI.register();
+			const response =  await JoblyAPI.register(formState);
 
 			if(response)
 				history.push('/companies');
 
 		}else if(onboardingMethod === 'login'){
 
-			const response = JoblyAPI.login();
+			const response = await JoblyAPI.login(formState);
 
-			if(response)
+			if(response.error){
+				
+				setShowErrorMessage(true);
+
+			}else{
+
+				console.log(response);
+				setJWT(response);
 				history.push('/companies');
+			
+			}
 
 		}
 
-		// stay at page.
-
 	}
-
-	//	...
-	useAuthenticationDependentRedirect(false);
 
 	return(
 	<div className="page">
@@ -115,12 +126,14 @@ function OnboardingPage({onboardingMethod}){
 			<tr>
 			<td><label htmlFor="password"><strong>Password</strong>: </label></td>
 			<td><input name="password"
-				type="text"
+				type="password"
 				onChange={formChangeHandler}
 				value={formState.password}
 				/>
 			</td>
 			</tr>
+
+			{showErrorMessage && <tr><td colSpan={2}>Invalid username/password combination.</td></tr>}
 			
 			<tr><td colSpan={2}>
 				<button className="fullWidth applyButton animation100" onClick={clickHandler}>{onboardingMethod === 'login' ? "Login" : "Register"}</button>

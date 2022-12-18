@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 function useLocalStorage(propertyKey, defaultValue){
 
-	const [state, setState] = useState(() => {
+	const [value, setValue] = useState(() => {
 
 		let parsedValue;
 
@@ -17,23 +17,30 @@ function useLocalStorage(propertyKey, defaultValue){
 
 	});
 
-	useEffect(() => {
-
-		window.localStorage.setItem(propertyKey, state);
-
-	}, [state])
-
 	/**	setProperty(propertyValue)
 	 *	Set the value of the Local Storage `propertyKey` with `propertyValue`.
 	 *	@param {*} propertyValue
 	 */
-	function setProperty(propertyValue){
+	 function setProperty(propertyValue){
 
-		setState(propertyValue);
+		// setState((state) => {console.log('run'); return propertyValue});
+		const newPropertyValue = propertyValue;
+		console.log(newPropertyValue === propertyValue)
+		setValue(() => newPropertyValue);
+		console.log(value);
+		console.log(propertyKey)
+		console.log(propertyValue);
 
 	}
 
-	return [state, setProperty];
+	useEffect(() => {
+
+		window.localStorage.setItem(propertyKey, JSON.stringify(value));
+		console.log(value);
+
+	}, [value])
+
+	return [value, setProperty];
 
 }
 
