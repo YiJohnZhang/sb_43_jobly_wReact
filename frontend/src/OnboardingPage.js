@@ -16,7 +16,6 @@ function OnboardingPage({onboardingMethod}){
 	const [jwt, setJWT] = useLocalStorage('jwt');
 	const [localSessionUsername, setLocalSessionUsername] = useLocalStorage('sessionUsername');
 	const {setSessionUsername} = useContext(UserDetailsContext);
-	const [localAppliedJobs, setLocalAppliedJobs] = useLocalStorage('appliedJobs');
 
 	useAuthenticationDependentRedirect(false);
 
@@ -69,6 +68,7 @@ function OnboardingPage({onboardingMethod}){
 		if(onboardingMethod === 'signup'){
 
 			const response =  await JoblyAPI.register(formState);
+			// console.log(response);
 
 			if(response)
 				loginSuccessful(response);

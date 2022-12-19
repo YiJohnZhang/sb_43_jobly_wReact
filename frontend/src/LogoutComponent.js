@@ -19,8 +19,7 @@ function LogoutComponent(){
 		localStorage.removeItem('sessionUsername');
 		localStorage.removeItem('appliedJobs');
 		history.push('/');
-		setTimeout(() => {history.go(0)}, 100);
-		// history.go(0);
+		history.go(0);
 
 	}
 

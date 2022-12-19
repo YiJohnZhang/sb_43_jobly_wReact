@@ -43,6 +43,8 @@ class JoblyAPI {
   static async register(newUserData){
 	  
 	const response = await this.request('auth/register', newUserData, 'post');
+	console.log(response.token)
+	console.log(response.username)
 	return response;
 
   }

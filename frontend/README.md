@@ -18,7 +18,7 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |10|**iohlaudfsaifhjdklosashdfjkl finally got `localStorage` working**. login/signup & logout working, just need to finish up applied/apply job|2022-12-17|20:04 - 22:21|137|
 |11|apply to job functionality|2022-12-18|10:43 - 11:23|40|
 |12|continue job application function|2022-12-18|13:53 - 15:12|79|
-|13|wrap up|2022-12-18|21:38 - :||
+|13|wrap up|2022-12-18|21:38 - 22:08|30|
 |14|Deploying applicaiton. cleanup `README.md`|2022-12-18|1: - :||
 ||||**Total Time**| minutes+3 hrs (for debugging `useLocalStorage` hook|
 12	13

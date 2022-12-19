@@ -11,7 +11,7 @@ function useAuthenticationDependentRedirect(authenticationRequired = true, redir
 
 	// sign in required, go to home if not signed in
 	if(authenticationRequired && !localStorage.getItem('jwt'))
-		history.goBack();
+		history.push('/');
 	
 	// sign in or signed out doesn't matter
 	if(authenticationRequired === undefined){

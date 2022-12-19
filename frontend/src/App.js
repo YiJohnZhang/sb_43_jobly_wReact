@@ -34,19 +34,10 @@ function App() {
 		
 		getAppliedJobs();
 
-	}, [sessionUsername])
-
-	function isApplied(jobID){
-
-		console.log(appliedJobs);
-
-		return appliedJobs.has(jobID);
-
-	}
-
+	}, [sessionUsername]);
 
 	return (
-	<UserDetailsContext.Provider value={{sessionUsername, setSessionUsername, appliedJobs, isApplied, setAppliedJobs}}>
+	<UserDetailsContext.Provider value={{sessionUsername, setSessionUsername, appliedJobs, setAppliedJobs}}>
 		<NavBar/>
 		<Switch>
 			<Route path="/companies/:companyHandle">
