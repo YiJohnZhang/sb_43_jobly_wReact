@@ -19,10 +19,10 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |11|apply to job functionality|2022-12-18|10:43 - 11:23|40|
 |12|continue job application function|2022-12-18|13:53 - 15:12|79|
 |13|wrap up|2022-12-18|21:38 - 22:08|30|
-|14|Deploying applicaiton. cleanup `README.md`|2022-12-18|1: - :||
+|14|Deploying applicaiton. cleanup `README.md`|2022-12-18|22:10 - :||
 ||||**Total Time**| minutes+3 hrs (for debugging `useLocalStorage` hook|
-12	13
-923
+13	14
+953
 
 ```sh
 App
@@ -41,9 +41,6 @@ App
 	|	└──	Controlled Form w/ `first name`, `last name`, `email`, and `password` (for verification)
 	└── Align Left: Logout or (Signup & Sign In)
 ```
-
-- todo:
-	- applied function / job applications function
 
 - Specifications: Minimal Requirements + Unintended Implemented **Further Study** Features:
 	- dynamic search bar (for companies and jobs)
