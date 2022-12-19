@@ -1,7 +1,7 @@
 # sb_43_jobly_w_react
 Jobly with React. Springboard Cumulative Project, publicy viewable.
 
-**Live Link**:
+**Live Link**: knowledgeable-health.surge.sh
 
 ## Time Tracker
 |Entry No.|Assignment|Date|Time|Time Elasped (min)|
@@ -19,10 +19,8 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |11|apply to job functionality|2022-12-18|10:43 - 11:23|40|
 |12|continue job application function|2022-12-18|13:53 - 15:12|79|
 |13|wrap up|2022-12-18|21:38 - 22:08|30|
-|14|Deploying applicaiton. cleanup `README.md`|2022-12-18|22:10 - :||
-||||**Total Time**| minutes+3 hrs (for debugging `useLocalStorage` hook|
-13	14
-953
+|14|Deploying applicaiton. cleanup `README.md`|2022-12-18|22:10 - 23:07|57|
+||||**Total Time**|1010 minutes+3 hrs (for debugging `useLocalStorage` hook|
 
 ```sh
 App

@@ -2,7 +2,8 @@ import axios from "axios";
 // import { response } from "express";
 	// https://stackoverflow.com/a/73318202
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = "https://sb43-react-jobly.herokuapp.com";
+// const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 /** API Class.
  *
