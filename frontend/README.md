@@ -17,12 +17,12 @@ Jobly with React. Springboard Cumulative Project, publicy viewable.
 |09|localStorage, applied toggling, login & singup routes. argth. **still can't get local storage to work** |2022-12-17|15:02 - 16:38|96|
 |10|**iohlaudfsaifhjdklosashdfjkl finally got `localStorage` working**. login/signup & logout working, just need to finish up applied/apply job|2022-12-17|20:04 - 22:21|137|
 |11|apply to job functionality|2022-12-18|10:43 - 11:23|40|
-|12|continue job application function|2022-12-18|13:53 - 15:12||
-|13||2022-12-18|1: - :||
-|14|cleanup `README.md`|2022-12-18|1: - :||
+|12|continue job application function|2022-12-18|13:53 - 15:12|79|
+|13|wrap up|2022-12-18|21:38 - :||
+|14|Deploying applicaiton. cleanup `README.md`|2022-12-18|1: - :||
 ||||**Total Time**| minutes+3 hrs (for debugging `useLocalStorage` hook|
-11	12
-844
+12	13
+923
 
 ```sh
 App
